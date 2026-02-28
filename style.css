@@ -319,7 +319,8 @@ button {
    font-size: 10rem;
    margin-bottom: 10px;
    font-family: "Black Ops One";
-   opacity: 0.2;
+   color: rgba(255, 255, 255, 0.825);
+   opacity: 0.8;
    -webkit-text-stroke: 50%;
    display: flex;
    display: flex;
