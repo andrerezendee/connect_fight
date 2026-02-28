@@ -345,3 +345,75 @@ button {
     }
   }
 }
+
+.muay-thai {
+  background-image: url(assets/muay-thay_section.webp);
+  background-position: 50% 0%;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 7vw 7vw 7vw;
+  box-sizing: border-box;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+
+    h1 {
+    font-size: 10rem;
+    color: aliceblue;
+    margin-bottom: 10px;
+    font-family: "Black Ops One";
+    opacity: 0.9;
+    -webkit-text-stroke: 50%;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    }
+  }
+}
+
+/* responsividade muay-thay section */
+
+@media (max-width: 768px) {
+  .muay-thai {
+    /* Altera para auto para o conteúdo não transbordar se o texto for longo */
+    height: auto;
+    min-height: 100vh;
+    /* Centraliza o conteúdo no mobile para melhor hierarquia visual */
+    justify-content: center;
+    padding: 80px 5vw 40px 5vw;
+    background-position: 40% center; /* Ajusta o foco da imagem de fundo */
+
+    .left {
+      width: 100%;
+      text-align: center;
+      align-items: center;
+
+      h1 {
+        /* Reduz o tamanho da fonte para caber na largura do celular */
+        font-size: 3.5rem;
+        /* Permite que o título quebre linha se necessário */
+        white-space: normal;
+        flex-wrap: wrap;
+        justify-content: center;
+        line-height: 1.1;
+
+        /* Ajuste do stroke: em fontes menores, 50% ou valores altos borram o texto */
+        -webkit-text-stroke: 1px rgba(240, 248, 255, 0.2);
+        opacity: 0.3; /* Aumenta um pouco a opacidade para leitura no mobile */
+      }
+
+      p {
+        font-size: 1.1rem;
+        max-width: 100%;
+        margin-top: 15px;
+      }
+    }
+  }
+}
