@@ -305,3 +305,43 @@ button {
     font-size: medium;
   }
 }
+
+/* responsividade jiu-jitsu section */
+
+@media (max-width: 768px) {
+  .jiu-jtsu {
+    /* Ajusta a altura para não cortar conteúdo no mobile */
+    height: auto;
+    min-height: 100vh;
+    /* Centraliza o conteúdo verticalmente e horizontalmente */
+    justify-content: center;
+    padding: 80px 5vw 40px 5vw;
+    background-position: center; /* Centraliza a imagem de fundo */
+
+    .right {
+      /* Ocupa a largura total para melhor leitura */
+      width: 100%;
+      text-align: center;
+      align-items: center;
+    }
+
+    h1 {
+      /* Redução drástica para caber na tela do celular */
+      font-size: 3.5rem;
+      /* Permite que as palavras quebrem linha se necessário */
+      white-space: normal;
+      flex-wrap: wrap;
+      justify-content: center;
+      line-height: 1.1;
+      margin-top: 20px;
+      /* Remove o stroke excessivo que pode borrar em fontes menores */
+      -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+    }
+
+    p {
+      font-size: 1.1rem;
+      margin-top: 20px;
+      max-width: 90%; /* Evita que o texto encoste nas bordas */
+    }
+  }
+}
