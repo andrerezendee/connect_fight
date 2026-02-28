@@ -188,6 +188,12 @@ button {
 
       }
     }
+
+     .botao-fake:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+      background-color: #f8fafc;
+    }
   }
 }
 
@@ -247,9 +253,29 @@ button {
       flex-shrink: 0; /* Impede que o card esmague */
     }
 
+    /* .botao-fake {
+      margin-left: 0; /* Centraliza o botão de ação */
+      /* margin-top: 20px;
+    } */ */
     .botao-fake {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
       margin-left: 0; /* Centraliza o botão de ação */
       margin-top: 20px;
+    }
+     .botao-fake:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+      background-color: #f8fafc;
     }
   }
 
@@ -499,5 +525,348 @@ button {
         max-width: 90%;
       }
     }
+  }
+}
+
+.unidades {
+  background-image: url(assets/unidades_section.webp);
+  background-position: 50% 0%;
+  background-size: cover;
+  width: 100%;
+  /* height: 100vh; */
+  font-family: 'Outfit', sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  padding: 2rem;
+
+  .header-container {
+    text-align: center;
+    margin-bottom: 5rem;
+    animation: fadeInDown 1s ease-out forwards;
+    position: relative;
+    z-index: 10;
+  }
+
+  h1 {
+      font-family:"Black Ops One" ;
+      font-size: 3.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+      font-size: 1.2rem;
+      color: #94a3b8;
+      font-weight: 300;
+      letter-spacing: 1px;
+  }
+
+  /* 3-COLUMN GRID EXACTLY AS REQUESTED */
+  .cards-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto auto;
+      column-gap: 2rem;
+      row-gap: 4rem;
+      width: 100%;
+      max-width: 1200px;
+      align-items: center;
+  }
+
+  .card-wrapper {
+      display: contents;
+      animation: fadeInUp 1s ease-out backwards;
+  }
+
+  .card-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 1.5rem;
+  }
+
+  /* Card 1: Top Left Octagon, Top Center Content */
+  .card-wrapper:nth-child(1) .octagon-card {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: center;
+      animation-delay: 0.2s;
+  }
+
+  .card-wrapper:nth-child(1) .card-content {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: center;
+      align-self: center;
+      animation-delay: 0.2s;
+  }
+
+  /* Card 2: Bottom Center Content, Bottom Right Octagon */
+  .card-wrapper:nth-child(2) .card-content {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: center;
+      align-self: center;
+      animation-delay: 0.4s;
+  }
+
+  .card-wrapper:nth-child(2) .octagon-card {
+      grid-column: 3;
+      grid-row: 2;
+      justify-self: center;
+      animation-delay: 0.4s;
+  }
+
+  /* Octagon Settings */
+  .octagon-card {
+      width: 350px;
+      height: 350px;
+      position: relative;
+      clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+      background: var(--card-bg);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), filter 0.4s;
+      cursor: default;
+  }
+
+  .octagon-card:hover {
+      transform: scale(1.05) translateY(-10px);
+      filter: drop-shadow(0 20px 30px rgba(239, 68, 68, 0.2));
+  }
+
+  .carousel {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+  }
+
+  .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.86, 0, 0.07, 1);
+  }
+
+  .carousel-track img {
+      min-width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8);
+      transition: filter 0.4s;
+  }
+
+  .octagon-card:hover .carousel-track img {
+      filter: brightness(1);
+  }
+
+  .carousel-controls {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 0.5rem;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out;
+      z-index: 10;
+  }
+
+  .octagon-card:hover .carousel-controls {
+      opacity: 1;
+  }
+
+  .carousel-controls button {
+      pointer-events: auto;
+      background: rgba(15, 23, 42, 0.7);
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      backdrop-filter: blur(8px);
+  }
+
+  .carousel-controls button:hover {
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.6);
+  }
+
+  .card-info {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+  }
+
+  .card-info h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--text-color);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      transition: color 0.3s;
+  }
+
+  .card-info p {
+      font-size: 1.1rem;
+      color: #94a3b8;
+      font-weight: 300;
+      max-width: 300px;
+      line-height: 1.4;
+  }
+
+  .card-wrapper:hover .card-info h2 {
+      color: var(--accent);
+  }
+
+  .cta-button {
+      background-color: #ffffff;
+      color: #000000;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+      margin-top: 1rem;
+  }
+
+  .cta-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+      background-color: #f8fafc;
+  }
+
+  @keyframes fadeInDown {
+      from {
+          opacity: 0;
+          transform: translateY(-30px);
+      }
+
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+
+  @keyframes fadeInUp {
+      from {
+          opacity: 0;
+          transform: translateY(40px);
+      }
+
+      to {
+          opacity: 1;
+          transform: translateY(0);
+      }
+  }
+}
+
+/* responsividade unidades section */
+
+@media (max-width: 992px) {
+  .unidades {
+    height: auto;
+    padding: 4rem 1rem;
+
+    .header-container {
+      margin-bottom: 3rem;
+
+      h1 {
+        font-size: 2.5rem;
+      }
+    }
+
+    /* Transforma o Grid em uma coluna única */
+    .cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 5rem; /* Espaço entre cada unidade */
+      align-items: center;
+    }
+
+    /* Anula o comportamento de grid nos wrappers para o mobile */
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      width: 100%;
+    }
+
+    /* Resetamos as posições específicas de grid que você definiu no desktop */
+    .card-wrapper:nth-child(1) .octagon-card,
+    .card-wrapper:nth-child(1) .card-content,
+    .card-wrapper:nth-child(2) .octagon-card,
+    .card-wrapper:nth-child(2) .card-content {
+      grid-column: auto;
+      grid-row: auto;
+      justify-self: center;
+      align-self: center;
+    }
+
+    /* Ajuste no tamanho do Octógono para telas menores */
+    .octagon-card {
+      width: 280px;
+      height: 280px;
+    }
+
+    .card-info h2 {
+      font-size: 1.6rem;
+    }
+
+    .card-info p {
+      font-size: 1rem;
+      max-width: 100%;
+    }
+
+    .cta-button {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+}
+
+/* Ajuste fino para celulares muito pequenos */
+@media (max-width: 480px) {
+  .unidades .header-container h1 {
+    font-size: 2rem;
+  }
+
+  .unidades .octagon-card {
+    width: 240px;
+    height: 240px;
   }
 }
