@@ -176,6 +176,9 @@ button {
       padding-bottom: 10px;
       background-color: white;
       gap: 2px;
+      text-decoration: none;
+      color: rgba(0, 0, 0, 0.849);
+      font-family: "montserrat";
 
 
       img {
@@ -366,7 +369,7 @@ button {
 
     h1 {
     font-size: 10rem;
-    color: aliceblue;
+    color: rgba(255, 255, 255, 0.837);
     margin-bottom: 10px;
     font-family: "Black Ops One";
     opacity: 0.9;
