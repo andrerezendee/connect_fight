@@ -13,7 +13,7 @@ header{
   position: absolute;
   z-index: 9;
 
-  padding-top: 8px;
+  padding-top: 15px;
 
 }
 
@@ -27,11 +27,12 @@ body {
   font-family: "benguiat";
 }
 h3 {
-  font-family: "benguiat";
+  font-family: "Roboto Mono";
   color: white;
 }
 button {
-  font-family: "benguiat";
+  font-family: "Roboto Mono";
+
 }
 .navbar {
   a {
@@ -40,6 +41,8 @@ button {
 
   }
 }
+
+
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(assets/hero.webp);
   background-position: 50% 0%;
@@ -52,15 +55,26 @@ button {
   padding: 0 7vw 7vw 7vw;
 
   .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
     img {
-      width: 400px;
+      width: 350px;
+      margin-top: 30px;
+
+    }
+    h3 {
+      align-items: end;
+      margin-top: 150px;
+      font-size: 30px;
     }
   }
 
   .hero-right {
-    display: inline-block;
+    display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: center;
 
     .modalidades-container {
       display: flex;
@@ -151,17 +165,98 @@ button {
       border-radius: 20px;
       text-align: center;
       align-items: center;
-      justify-content: center;
+      margin-left: 0;
       padding: 7px;
       background-color: white;
-      gap: 10px;
+      gap: 2px;
 
 
       img {
         width: 20px;
-        padding: 4px;
+        padding: 5px;
+
 
       }
     }
+  }
+}
+
+ /* responsividade hero */
+
+ /* Media Query para Celulares e Tablets pequenos */
+@media (max-width: 970px) {
+
+  header {
+    display: none;
+
+  }
+
+  .hero {
+    flex-direction: column; /* Empilha o conteúdo */
+    height: auto; /* Permite que o conteúdo cresça verticalmente */
+    min-height: 100vh;
+    padding: 100px 5vw 40px 5vw; /* Aumenta o padding superior por causa do header absolute */
+    justify-content: flex-start;
+  }
+
+  .hero .hero-left {
+    align-items: center;
+    text-align: center;
+
+    img {
+      width: 80%; /* Logo diminui proporcionalmente */
+      max-width: 250px;
+    }
+
+    h3 {
+      margin-top: 40px;
+      font-size: 24px;
+      align-items: center;
+    }
+  }
+
+  .hero .hero-right {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .modalidades-container {
+      justify-content: center;
+      padding: 20px 0;
+      width: 100%;
+      gap: 10px;
+      /* Faz os cards rolarem lateralmente se não couberem */
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .botao-modalidade {
+      width: 120px; /* Diminui a largura no mobile */
+      height: 300px; /* Diminui a altura */
+      flex-shrink: 0; /* Impede que o card esmague */
+    }
+
+    .botao-fake {
+      margin-left: 0; /* Centraliza o botão de ação */
+      margin-top: 20px;
+    }
+  }
+
+  section {
+    padding: 10vw 5vw;
+    flex-direction: column;
+  }
+}
+
+/* Ajuste extra para telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 480px) {
+  .hero .hero-left h3 {
+    font-size: 20px;
+  }
+
+  .hero .hero-right .botao-modalidade {
+    width: 100px;
+    height: 250px;
   }
 }
