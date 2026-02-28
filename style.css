@@ -35,15 +35,15 @@ h3 {
   color: white;
 }
 button {
-  font-family: "Roboto Mono";
+  font-family: "montserrat";
   font-size: 15px;
-  font-weight: ;
 
 }
 .navbar {
   a {
     color: white;
     text-decoration: none;
+    font-family: "montserrat";
 
   }
 }
@@ -413,6 +413,87 @@ button {
         font-size: 1.1rem;
         max-width: 100%;
         margin-top: 15px;
+      }
+    }
+  }
+}
+
+.kids {
+  background-image: url(assets/kids_section.webp);
+  background-position: 50% 0%;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 7vw 7vw 7vw;
+  box-sizing: border-box;
+
+    .right {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    width: 50%;
+
+    h1 {
+    font-size: 10rem;
+    color: rgba(255, 255, 255, 0.87);
+    margin-bottom: 10px;
+    font-family: "Black Ops One";
+    opacity: 0.6;
+    -webkit-text-stroke: 50%;
+    display: flex;
+    gap: 20px;
+    justify-content: flex-end;
+    }
+
+    h3 {
+      color:rgba(255, 255, 255, 0.868);
+      font-family: "montserrat";
+      font-weight: 400;
+      font-style: normal;
+      font-size: 30px;
+    }
+  }
+}
+
+/* responsividade kids section */
+
+@media (max-width: 768px) {
+  .kids {
+    /* Permite que a seção cresça se o texto for longo */
+    height: auto;
+    min-height: 100vh;
+    /* Centraliza o conteúdo no meio da tela */
+    justify-content: center;
+    padding: 60px 5vw;
+    /* Ajusta a imagem de fundo para focar no centro */
+    background-position: center;
+
+    .right {
+      /* Ocupa a largura total para facilitar a leitura */
+      width: 100%;
+      text-align: center;
+      align-items: center;
+
+      h1 {
+        /* Redução para caber em telas estreitas */
+        font-size: 3.5rem;
+        /* Permite que as palavras quebrem linha */
+        white-space: normal;
+        flex-wrap: wrap;
+        justify-content: center;
+        line-height: 1.1;
+        margin-bottom: 20px;
+        /* Ajuste do stroke para não borrar em fontes menores */
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+      }
+
+      h3 {
+        font-size: 22px; /* Diminui o subtítulo */
+        line-height: 1.4;
+        max-width: 90%;
       }
     }
   }
