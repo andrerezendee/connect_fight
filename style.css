@@ -323,7 +323,7 @@ button {
    opacity: 0.8;
    -webkit-text-stroke: 50%;
    display: flex;
-   display: flex;
+
 
   gap: 20px; /* Espaço entre as palavras */
   white-space: nowrap; /* Impede que as palavras quebrem linha */
@@ -870,4 +870,98 @@ button {
     width: 240px;
     height: 240px;
   }
+}
+
+/* footer */
+.footer {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),url(assets/footer.webp);
+  background-position: 50% 0%;
+  background-size: border-box;
+  padding: 20px 7vw;
+  width: 100%;
+  height: 100vh;
+
+  /* align-items: center;
+  jus
+  padding: 0 7vw 7vw 7vw;
+  box-sizing: border-box;
+
+
+  .superior {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente o h1 */
+    /* align-items: flex-start; Alinha no topo da section */
+    /* padding-top: 5rem;       Espaçamento do topo da página */
+
+
+  .superior h1 {
+    font-size: 5rem;
+    margin-bottom: 10px;
+    font-family: "Black Ops One";
+    color: rgba(255, 255, 255, 0.825);
+    opacity: 0.8;
+
+    /* Ajuste do Stroke: use px para evitar que a letra "suma" */
+    /* -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5); */
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+    /* Força as palavras a ficarem em uma linha só */
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+  }
+  .links-footer {
+    display: flex;
+    justify-content: space-between; /* Um para cada lado */
+    align-items: center;            /* Centraliza ambos no "meio" vertical */
+    width: 100%;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinha o texto à esquerda */
+    gap: 10px;
+
+    a {
+      text-decoration: none;
+      color: white;
+      font-family: "Roboto Mono", monospace; /* Seguindo sua preferência */
+      white-space: nowrap;
+      width: 100%;
+
+
+      text {
+        display: flex;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+
+      }
+    }
+  }
+
+
+  .right-pai {
+    display: flex;
+    justify-content: flex-end; /* Empurra o conteúdo para a direita */
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      width: 50px;
+      gap: 10px;
+      text-align: right;
+      /* margin-right: 30px; */
+      }
+  }
+
 }

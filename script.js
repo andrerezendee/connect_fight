@@ -50,3 +50,4 @@ function resetAutoPlay() {
 document.addEventListener('DOMContentLoaded', () => {
     startAutoPlay();
 });
+
