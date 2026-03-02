@@ -1,3 +1,6 @@
+html {
+  scroll-behavior: smooth;
+}
 *{
   margin:0;
   padding: 0;
@@ -1306,50 +1309,167 @@ padding-top: 15vh;
   .links-footer {
     display: flex;
     justify-content: space-between; /* Um para cada lado */
-    align-items: center;            /* Centraliza ambos no "meio" vertical */
+    align-items: flex-start;            /* Centraliza ambos no "meio" vertical */
     width: 100%;
+    margin-top: 5rem;
   }
 
   .left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 15px; /* Espaço entre as linhas de contato */
+
+  a {
+    display: flex;           /* Transforma o link em um container flex */
+    align-items: center;      /* Alinha ícone e texto verticalmente no centro */
+    gap: 12px;               /* Espaço entre o ícone e o texto */
+    text-decoration: none;
+    color: white;
+    font-family: "Roboto Mono", monospace;
+    transition: opacity 0.3s;
+
+    img {
+      width: 30px;           /* Tamanho padronizado para os ícones */
+      height: auto;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+
+  .right-pai {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: auto; /* Deixa o container ocupar apenas o espaço necessário */
+
+  .right {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start; /* Alinha o texto à esquerda */
-    gap: 10px;
+    flex-direction: row;    /* Ícones um ao lado do outro */
+    align-items: center;
+    gap: 30px;              /* Espaçamento entre os dois ícones */
+    width: auto;            /* REMOVIDO os 50px que quebravam o layout */
 
-    a {
-      text-decoration: none;
-      color: white;
-      font-family: "Roboto Mono", monospace; /* Seguindo sua preferência */
-      white-space: nowrap;
+    img {
+      height: 50px;         /* Ajuste o tamanho dos logos Wellhub/Totalpass */
+      width: auto;
+      border-radius: 5px;
+      /* filter: grayscale(1) brightness(1.5); Opcional: deixa os logos brancos para o footer */
+    }
+  }
+}
+
+
+
+}
+
+.rodape {
+    /* REMOVIDO: position: fixed, bottom: 0, left: 0 */
+
+    width: 100%;
+    margin-top: 19rem;      /* Espaço entre os links do footer e esta linha final */
+    padding: 20px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha sutil divisória */
+
+    font-family: "Montserrat", sans-serif;
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    text-align: center;
+    background-color: transparent; /* Ele herdará o fundo da section .footer */
+}
+
+.rodape a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.rodape a:hover {
+    color: #fff;
+}
+
+/* responsividade footer */
+
+
+@media (max-width: 768px) {
+  .footer {
+    /* Ajuste de altura para o conteúdo caber no mobile */
+    height: auto;
+    min-height: 100vh;
+    padding: 100px 5vw 40px 5vw;
+
+    /* Suaviza o clip-path no mobile para ganhar espaço */
+    clip-path: polygon(0 0, 20% 4%, 80% 4%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5vh;
+
+    .superior h1 {
+      font-size: 2.2rem; /* Reduz o título gigante */
+      white-space: normal; /* Permite que o título quebre linha no celular */
+      line-height: 1.2;
+    }
+
+    .links-footer {
+      flex-direction: column; /* Empilha esquerda e direita */
+      align-items: center;    /* Centraliza tudo */
+      gap: 3rem;             /* Espaço entre contatos e logos de parceiros */
+      margin-top: 3rem;
+    }
+
+    .left {
+      align-items: center; /* Centraliza os links de WhatsApp/Insta */
+      text-align: center;
       width: 100%;
+      gap: 13px;
 
-
-      text {
-        display: flex;
-        text-align: center;
-        align-items: center;
+      a {
         justify-content: center;
+        font-size: 0.9rem;
+        gap: 10px;
 
+        img {
+          width: 25px;
+          height: auto; /* Ícones levemente menores */
+        }
+      }
+    }
+
+
+    .right-pai {
+      justify-content: center; /* Centraliza Wellhub e Totalpass */
+      width: 100%;
+      padding: 0;
+
+      .right {
+        justify-content: center;
+        gap: 20px;
+
+        img {
+          height: 40px; /* Logos de parceiros menores */
+        }
       }
     }
   }
 
+  .rodape {
+    margin-top: 15rem; /* Reduz o espaço exagerado de 19rem no mobile */
+    padding: 20px 5vw;
+    font-size: 10px;
+    line-height: 1.5;
+  }
+}
 
-  .right-pai {
-    display: flex;
-    justify-content: flex-end; /* Empurra o conteúdo para a direita */
-    width: 100%;
-    padding: 20px;
-    box-sizing: border-box;
-    .right {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      width: 50px;
-      gap: 10px;
-      text-align: right;
-
-      }
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+  .footer .superior h1 {
+    font-size: 1.8rem;
   }
 
+  .footer .left a {
+    font-size: 0.8rem;
+  }
 }
