@@ -49,6 +49,7 @@ button {
 }
 
 
+
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)), url(assets/hero.webp);
   background-position: 50% 0%;
@@ -305,15 +306,19 @@ button {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: space-between;
+
   padding: 0 7vw 7vw 7vw;
   box-sizing: border-box;
 
+
   .right {
-    display: flex;
-    flex-direction: column;
+    /* display: flex; */
+    /* justify-content: flex-end; */
+    /* flex-direction: column; */
     text-align: right;
-    width: 50%;
+    width: 100%;
   }
   h1 {
    font-size: 10rem;
@@ -322,17 +327,102 @@ button {
    color: rgba(255, 255, 255, 0.825);
    opacity: 0.8;
    -webkit-text-stroke: 50%;
-   display: flex;
+   /* display: flex; */
+   gap: 20px;
+   /* justify-content: flex-end; */
 
-
-  gap: 20px; /* Espaço entre as palavras */
   white-space: nowrap; /* Impede que as palavras quebrem linha */
 
   /* Se quiser que o título todo fique à direita como na div .right: */
-  justify-content: flex-end;
+  /* justify-content: flex-end; */
   }
   p {
     font-size: medium;
+  }
+
+  /* Schedule Section */
+  .schedule-section {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 2rem;
+      margin-bottom: 4rem;
+      width: 100%;
+      max-width: 1200px;
+      animation: fadeInUp 1s ease-out backwards;
+      animation-delay: 0.6s;
+  }
+
+  .schedule-card {
+      width: 400px;
+      background: rgba(255, 255, 255, 0.02);
+      /* more transparent tint */
+      backdrop-filter: blur(10px);
+      /* glassmorphism */
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      text-align: center;
+      color: var(--text-color);
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  }
+
+  .schedule-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+      border-color: rgba(255, 255, 255, 0.2);
+  }
+
+  .schedule-card h3 {
+      font-size: 1.5rem;
+      font-family: "montserrat";
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #ffffffcf;
+  }
+
+  .schedule-days {
+      font-size: 1rem;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+  }
+
+  .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+      padding: 0.8rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 1rem;
+  }
+
+  .schedule-table th {
+      font-weight: 600;
+      color: #ffffffcf;
+      text-align: left;
+  }
+
+  .schedule-table td {
+      font-weight: 300;
+      text-align: left;
+  }
+
+  .schedule-table tr:last-child th,
+  .schedule-table tr:last-child td {
+      border-bottom: none;
+  }
+
+  .schedule-table td:last-child,
+  .schedule-table th:last-child {
+      text-align: right;
   }
 }
 
@@ -384,7 +474,7 @@ button {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: space-between;
   padding: 0 7vw 7vw 7vw;
   box-sizing: border-box;
 
@@ -406,6 +496,92 @@ button {
     justify-content: flex-start;
     }
   }
+
+    /* Schedule Section */
+    .schedule-section {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 4rem;
+        width: 100%;
+        max-width: 1200px;
+        animation: fadeInUp 1s ease-out backwards;
+        animation-delay: 0.6s;
+    }
+
+    .schedule-card {
+        width: 400px;
+        background: rgba(255, 255, 255, 0.02);
+        /* more transparent tint */
+        backdrop-filter: blur(10px);
+        /* glassmorphism */
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        color: var(--text-color);
+        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+    }
+
+    .schedule-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .schedule-card h3 {
+        font-size: 1.5rem;
+        font-family: "montserrat";
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: #ffffffcf;
+    }
+
+    .schedule-days {
+        font-size: 1rem;
+        color: var(--accent);
+        margin-bottom: 1.5rem;
+        font-weight: 300;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 1rem;
+    }
+
+    .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+        padding: 0.8rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        font-size: 1rem;
+    }
+
+    .schedule-table th {
+        font-weight: 600;
+        color: #ffffffcf;
+        text-align: left;
+    }
+
+    .schedule-table td {
+        font-weight: 300;
+        text-align: left;
+    }
+
+    .schedule-table tr:last-child th,
+    .schedule-table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .schedule-table td:last-child,
+    .schedule-table th:last-child {
+        text-align: right;
+    }
+
 }
 
 /* responsividade muay-thay section */
@@ -456,7 +632,7 @@ button {
   height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 0 7vw 7vw 7vw;
   box-sizing: border-box;
 
@@ -486,6 +662,93 @@ button {
       font-size: 30px;
     }
   }
+
+      /* Schedule Section */
+      .schedule-section {
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          margin-top: 2rem;
+          margin-bottom: 4rem;
+          width: 100%;
+          max-width: 1200px;
+          animation: fadeInUp 1s ease-out backwards;
+          animation-delay: 0.6s;
+      }
+
+      .schedule-card {
+          width: 400px;
+          background: rgba(255, 255, 255, 0.02);
+          /* more transparent tint */
+          backdrop-filter: blur(10px);
+          /* glassmorphism */
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 20px;
+          padding: 2rem;
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+          text-align: center;
+          color: var(--text-color);
+          transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      }
+
+      .schedule-card:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+          border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .schedule-card h3 {
+          font-size: 1.5rem;
+          font-family: "montserrat";
+          font-weight: 600;
+          margin-bottom: 0.5rem;
+          color: #ffffffcf;
+      }
+
+      .schedule-days {
+          font-size: 1rem;
+          color: var(--accent);
+          margin-bottom: 1.5rem;
+          font-weight: 300;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          padding-bottom: 1rem;
+      }
+
+      .schedule-table {
+          width: 100%;
+          border-collapse: collapse;
+      }
+
+      .schedule-table th,
+      .schedule-table td {
+          padding: 0.8rem 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          font-size: 1rem;
+      }
+
+      .schedule-table th {
+          font-weight: 600;
+          color: #ffffffcf;
+          text-align: left;
+      }
+
+      .schedule-table td {
+          font-weight: 300;
+          text-align: left;
+      }
+
+      .schedule-table tr:last-child th,
+      .schedule-table tr:last-child td {
+          border-bottom: none;
+      }
+
+      .schedule-table td:last-child,
+      .schedule-table th:last-child {
+          text-align: right;
+      }
+
+
 }
 
 /* responsividade kids section */
@@ -568,7 +831,7 @@ button {
 
   .subtitle {
       font-size: 1.2rem;
-      color: #94a3b8;
+      color: #ffffffe0;
       font-weight: 300;
       letter-spacing: 1px;
   }
@@ -579,10 +842,11 @@ button {
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto auto;
       column-gap: 2rem;
-      row-gap: 4rem;
+      row-gap: 0rem;
       width: 100%;
       max-width: 1200px;
       align-items: center;
+      margin-bottom: 30px;
   }
 
   .card-wrapper {
@@ -729,7 +993,7 @@ button {
   .card-info h2 {
       font-size: 2rem;
       font-weight: 800;
-      color: var(--text-color);
+      color: #ffffffe0;
       letter-spacing: 1px;
       text-transform: uppercase;
       text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
@@ -738,22 +1002,19 @@ button {
 
   .card-info p {
       font-size: 1.1rem;
-      color: #94a3b8;
+      color: #ffffffe0;
       font-weight: 300;
       max-width: 300px;
       line-height: 1.4;
   }
 
-  .card-wrapper:hover .card-info h2 {
-      color: var(--accent);
-  }
-
   .cta-button {
-      background-color: #ffffff;
-      color: #000000;
+      background-color: #ffffffd3;
+      color: #000000d3;
       padding: 1rem 2rem;
       border-radius: 50px;
       text-decoration: none;
+      font-family: "montserrat";
       font-weight: 600;
       font-size: 1.1rem;
       text-transform: uppercase;
