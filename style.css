@@ -254,10 +254,7 @@ button {
       flex-shrink: 0; /* Impede que o card esmague */
     }
 
-    /* .botao-fake {
-      margin-left: 0; /* Centraliza o botão de ação */
-      /* margin-top: 20px;
-    } */ */
+
     .botao-fake {
       background-color: #ffffff;
       color: #000000;
@@ -272,6 +269,7 @@ button {
       box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
       margin-left: 0; /* Centraliza o botão de ação */
       margin-top: 20px;
+      margin-bottom: 2vh;
     }
      .botao-fake:hover {
       transform: translateY(-3px) scale(1.05);
@@ -298,6 +296,7 @@ button {
   }
 }
 
+
 .jiu-jtsu {
   background-image: url(assets/jiu-jitsu_section.webp);
   background-position: 50% 0%;
@@ -311,6 +310,9 @@ button {
 
   padding: 0 7vw 7vw 7vw;
   box-sizing: border-box;
+
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  margin-top: -10vh; /* Sobe a seção para sobrepor a anterior */
 
 
   .right {
@@ -430,39 +432,71 @@ button {
 
 @media (max-width: 768px) {
   .jiu-jtsu {
-    /* Ajusta a altura para não cortar conteúdo no mobile */
+    /* Altera para auto para o conteúdo não transbordar se o texto for longo */
     height: auto;
     min-height: 100vh;
-    /* Centraliza o conteúdo verticalmente e horizontalmente */
+    /* Empilha o card de horários e o título verticalmente */
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     padding: 80px 5vw 40px 5vw;
-    background-position: center; /* Centraliza a imagem de fundo */
+    gap: 3rem; /* Espaço entre o card e o título */
+
+    /* Suaviza a inclinação para não cortar o conteúdo no mobile */
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5vh;
 
     .right {
-      /* Ocupa a largura total para melhor leitura */
       width: 100%;
       text-align: center;
-      align-items: center;
+      /* No mobile, o título geralmente fica melhor acima ou logo abaixo do card */
+      order: 1;
+
+      h1 {
+        /* Redução drástica para caber na largura do celular */
+        font-size: 3.5rem;
+        /* Permite que o título quebre linha se necessário */
+        white-space: normal;
+        line-height: 1.1;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap;
+        /* Ajuste do stroke para não borrar em fontes menores */
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+      }
     }
 
-    h1 {
-      /* Redução drástica para caber na tela do celular */
-      font-size: 3.5rem;
-      /* Permite que as palavras quebrem linha se necessário */
-      white-space: normal;
-      flex-wrap: wrap;
-      justify-content: center;
-      line-height: 1.1;
-      margin-top: 20px;
-      /* Remove o stroke excessivo que pode borrar em fontes menores */
-      -webkit-text-stroke: 1px rgba(255,255,255,0.1);
+    /* Ajuste do Card de Horários (Glassmorphism) */
+    .schedule-card {
+      width: 100%; /* Ocupa a largura total disponível */
+      max-width: 380px; /* Limite para não ficar excessivamente largo em tablets */
+      padding: 1.5rem;
+      order: 2; /* Posiciona o card abaixo do título */
     }
 
-    p {
-      font-size: 1.1rem;
-      margin-top: 20px;
-      max-width: 90%; /* Evita que o texto encoste nas bordas */
+    .schedule-section {
+      justify-content: center; /* Centraliza o card na tela */
+      margin-top: 1rem;
+      margin-bottom: 2rem;
     }
+
+    /* Ajustes na tabela para telas pequenas */
+    .schedule-table th,
+    .schedule-table td {
+      font-size: 0.9rem;
+      padding: 0.6rem 0;
+    }
+  }
+}
+
+/* Ajuste fino para aparelhos muito estreitos */
+@media (max-width: 480px) {
+  .jiu-jtsu .right h1 {
+    font-size: 2.8rem;
+  }
+
+  .jiu-jtsu .schedule-card {
+    padding: 1.2rem;
   }
 }
 
@@ -477,6 +511,9 @@ button {
   justify-content: space-between;
   padding: 0 7vw 7vw 7vw;
   box-sizing: border-box;
+
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 10%);
+  margin-top: -10vh; /* Sobe a seção para sobrepor a anterior */
 
   .left {
     display: flex;
@@ -588,13 +625,18 @@ button {
 
 @media (max-width: 768px) {
   .muay-thai {
-    /* Altera para auto para o conteúdo não transbordar se o texto for longo */
+    /* Permite que a seção cresça conforme o conteúdo empilhado */
     height: auto;
     min-height: 100vh;
-    /* Centraliza o conteúdo no mobile para melhor hierarquia visual */
+    flex-direction: column; /* Empilha o Título e o Card */
     justify-content: center;
+    align-items: center;
     padding: 80px 5vw 40px 5vw;
-    background-position: 40% center; /* Ajusta o foco da imagem de fundo */
+    gap: 2.5rem; /* Espaço entre o título e a tabela */
+
+    /* Suaviza a inclinação para não cortar o conteúdo no mobile */
+    clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 5%);
+    margin-top: -5vh;
 
     .left {
       width: 100%;
@@ -602,25 +644,49 @@ button {
       align-items: center;
 
       h1 {
-        /* Reduz o tamanho da fonte para caber na largura do celular */
+        /* Redução do tamanho massivo para telas de celular */
         font-size: 3.5rem;
-        /* Permite que o título quebre linha se necessário */
-        white-space: normal;
-        flex-wrap: wrap;
         justify-content: center;
+        white-space: normal; /* Permite que o texto quebre linha */
+        flex-wrap: wrap;
         line-height: 1.1;
-
-        /* Ajuste do stroke: em fontes menores, 50% ou valores altos borram o texto */
-        -webkit-text-stroke: 1px rgba(240, 248, 255, 0.2);
-        opacity: 0.3; /* Aumenta um pouco a opacidade para leitura no mobile */
-      }
-
-      p {
-        font-size: 1.1rem;
-        max-width: 100%;
-        margin-top: 15px;
+        /* Ajuste do stroke para não borrar em fontes menores */
+        -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
       }
     }
+
+    /* Ajuste do Card de Horários */
+    .schedule-card {
+      width: 100%; /* Ocupa a largura total do container mobile */
+      max-width: 380px; /* Limite para não ficar excessivamente largo */
+      padding: 1.5rem;
+      margin: 0 auto;
+    }
+
+    .schedule-section {
+      justify-content: center; /* Centraliza o card na tela */
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    /* Ajustes na tabela para telas pequenas */
+    .schedule-table th,
+    .schedule-table td {
+      font-size: 0.9rem;
+      padding: 0.6rem 0;
+    }
+  }
+}
+
+/* Ajustes finos para celulares muito estreitos */
+@media (max-width: 480px) {
+  .muay-thai .left h1 {
+    font-size: 2.8rem;
+  }
+
+  .muay-thai .schedule-card {
+    padding: 1rem;
+    border-radius: 15px;
   }
 }
 
@@ -635,6 +701,10 @@ button {
   justify-content: space-between;
   padding: 0 7vw 7vw 7vw;
   box-sizing: border-box;
+
+  clip-path: polygon(0 10%, 100% 0, 100% 100%, 0 100%);
+  margin-top: -10vh; /* Sobe a seção para sobrepor a anterior */
+
 
     .right {
     display: flex;
@@ -753,42 +823,72 @@ button {
 
 /* responsividade kids section */
 
+
 @media (max-width: 768px) {
   .kids {
-    /* Permite que a seção cresça se o texto for longo */
+    /* Permite que a seção cresça verticalmente com o conteúdo */
     height: auto;
     min-height: 100vh;
-    /* Centraliza o conteúdo no meio da tela */
+    flex-direction: column; /* Empilha o Card e o Texto */
     justify-content: center;
-    padding: 60px 5vw;
-    /* Ajusta a imagem de fundo para focar no centro */
-    background-position: center;
+    align-items: center;
+    padding: 80px 5vw 40px 5vw;
+    gap: 3rem; /* Espaço entre o card de horários e o título */
+
+    /* Suaviza a inclinação no mobile para não "comer" muito espaço */
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+    margin-top: -5vh;
 
     .right {
-      /* Ocupa a largura total para facilitar a leitura */
       width: 100%;
       text-align: center;
-      align-items: center;
+      order: 1; /* Coloca o título KIDS no topo no mobile */
 
       h1 {
-        /* Redução para caber em telas estreitas */
-        font-size: 3.5rem;
-        /* Permite que as palavras quebrem linha */
-        white-space: normal;
-        flex-wrap: wrap;
+        font-size: 4rem; /* Redução drástica para caber no celular */
         justify-content: center;
-        line-height: 1.1;
-        margin-bottom: 20px;
-        /* Ajuste do stroke para não borrar em fontes menores */
+        white-space: normal; /* Permite quebra de linha */
+        flex-wrap: wrap;
+        line-height: 1;
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
       }
 
       h3 {
-        font-size: 22px; /* Diminui o subtítulo */
-        line-height: 1.4;
-        max-width: 90%;
+        font-size: 20px;
+        margin-top: 10px;
       }
     }
+
+    /* Ajuste do Card de Horários */
+    .schedule-card {
+      width: 100%; /* Ocupa a largura total disponível */
+      max-width: 350px; /* Limite para não ficar largo demais em tablets */
+      padding: 1.5rem;
+      order: 2; /* Card fica abaixo do título no mobile */
+      margin: 0 auto;
+    }
+
+    .schedule-section {
+      justify-content: center;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .schedule-table th,
+    .schedule-table td {
+      font-size: 0.9rem; /* Diminui levemente a fonte da tabela */
+    }
+  }
+}
+
+/* Ajuste para telas muito pequenas */
+@media (max-width: 480px) {
+  .kids .right h1 {
+    font-size: 3rem;
+  }
+
+  .kids .schedule-card {
+    padding: 1rem;
   }
 }
 
@@ -806,6 +906,25 @@ button {
   justify-content: center;
   overflow-x: hidden;
   padding: 2rem;
+
+  clip-path: polygon(
+    0 7%,           /* Canto superior esquerdo inclinado */
+    20% 0,           /* Fim da inclinação esquerda (topo reto começa) */
+    80% 0,           /* Início da inclinação direita (topo reto termina) */
+    100% 7%,        /* Canto superior direito inclinado */
+    100% 100%,       /* Canto inferior direito */
+    0 100%           /* Canto inferior esquerdo */
+  );
+
+  /* Mantemos o margin-top negativo para sobrepor a seção anterior */
+  margin-top: -10vh;
+  position: relative;
+  z-index: 2;
+
+  /* Garante que o conteúdo não fique muito perto do topo inclinado */
+  padding-top: 15vh;
+
+
 
   .header-container {
     text-align: center;
@@ -1059,35 +1178,42 @@ button {
 
 @media (max-width: 992px) {
   .unidades {
+    /* Ajuste de altura e padding para mobile */
     height: auto;
-    padding: 4rem 1rem;
+    min-height: 100vh;
+    padding: 80px 5vw 40px 5vw;
+    margin-top: -7vh; /* Suaviza o impacto do clip-path no mobile */
+    clip-path: polygon(0 4%, 20% 0, 80% 0, 100% 4%, 100% 100%, 0 100%);
 
     .header-container {
       margin-bottom: 3rem;
 
       h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Reduz o título principal */
+      }
+      .subtitle {
+        font-size: 1rem;
       }
     }
 
-    /* Transforma o Grid em uma coluna única */
+    /* Transformamos o grid em uma coluna flexível */
     .cards-container {
       display: flex;
       flex-direction: column;
-      gap: 5rem; /* Espaço entre cada unidade */
-      align-items: center;
+      gap: 4rem; /* Espaçamento entre as unidades */
+      width: 100%;
     }
 
-    /* Anula o comportamento de grid nos wrappers para o mobile */
+    /* Resetamos o comportamento de grid manual dos wrappers */
     .card-wrapper {
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 2rem;
+      gap: 1.5rem;
       width: 100%;
     }
 
-    /* Resetamos as posições específicas de grid que você definiu no desktop */
+    /* Anulamos as regras de grid-column específicas do desktop */
     .card-wrapper:nth-child(1) .octagon-card,
     .card-wrapper:nth-child(1) .card-content,
     .card-wrapper:nth-child(2) .octagon-card,
@@ -1098,35 +1224,33 @@ button {
       align-self: center;
     }
 
-    /* Ajuste no tamanho do Octógono para telas menores */
+    /* Redimensionamento dos Octógonos para caber na tela do celular */
     .octagon-card {
       width: 280px;
       height: 280px;
     }
 
-    .card-info h2 {
-      font-size: 1.6rem;
-    }
-
-    .card-info p {
-      font-size: 1rem;
-      max-width: 100%;
+    .card-info {
+      h2 {
+        font-size: 1.5rem;
+      }
+      p {
+        font-size: 0.95rem;
+        max-width: 100%;
+      }
     }
 
     .cta-button {
-      width: 100%;
-      max-width: 300px;
-      text-align: center;
+      font-size: 1rem;
+      padding: 0.8rem 1.5rem;
+      width: 100%; /* Botão ocupa a largura total disponível */
+      max-width: 280px;
     }
   }
 }
 
-/* Ajuste fino para celulares muito pequenos */
+/* Ajuste fino para aparelhos muito estreitos (iPhone SE, etc) */
 @media (max-width: 480px) {
-  .unidades .header-container h1 {
-    font-size: 2rem;
-  }
-
   .unidades .octagon-card {
     width: 240px;
     height: 240px;
@@ -1142,18 +1266,23 @@ button {
   width: 100%;
   height: 100vh;
 
-  /* align-items: center;
-  jus
-  padding: 0 7vw 7vw 7vw;
-  box-sizing: border-box;
+  clip-path: polygon(
+    0 0,             /* Canto superior esquerdo no topo absoluto */
+    20% 7%,          /* Início da queda (centro começa a descer) */
+    80% 7%,          /* Fim da parte baixa (prepara para subir) */
+    100% 0,          /* Canto superior direito volta ao topo */
+    100% 100%,       /* Canto inferior direito */
+    0 100%           /* Canto inferior esquerdo */
+);
 
+/* Mantemos o margin-top negativo para sobrepor a seção anterior */
+margin-top: -10vh;
+position: relative;
+z-index: 2;
 
-  .superior {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* Centraliza horizontalmente o h1 */
-    /* align-items: flex-start; Alinha no topo da section */
-    /* padding-top: 5rem;       Espaçamento do topo da página */
+/* Ajuste o padding para compensar a descida do centro */
+padding-top: 15vh;
+
 
 
   .superior h1 {
@@ -1163,8 +1292,6 @@ button {
     color: rgba(255, 255, 255, 0.825);
     opacity: 0.8;
 
-    /* Ajuste do Stroke: use px para evitar que a letra "suma" */
-    /* -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5); */
 
     display: flex;
     flex-direction: column;
@@ -1221,7 +1348,7 @@ button {
       width: 50px;
       gap: 10px;
       text-align: right;
-      /* margin-right: 30px; */
+
       }
   }
 
