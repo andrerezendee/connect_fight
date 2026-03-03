@@ -952,11 +952,13 @@ button {
 
     .schedule-table {
       border-spacing: 0 10px;
+
     }
 
     .schedule-table td {
       padding: 1.2rem 1rem;
       font-size: 0.85rem;
+
     }
 
     .schedule-table td:first-child {
@@ -964,15 +966,27 @@ button {
     }
 
     /* Ajuste de animação para Touch */
-    .schedule-table tr:active,
-    .schedule-table tr:hover {
-      transform: scale(1.02) translateX(5px);
+    .schedule-table tr {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Esta classe será controlada pelo JavaScript */
+    .schedule-table tr.active-row td {
+        background: #fff !important;
+        color: #000 !important;
+        transform: scale(1.02) translateX(5px);
     }
 
-    .schedule-table tr:hover td:first-child {
-      border-left-width: 8px;
+    .schedule-table tr.active-row td:first-child {
+        border-left: 15px solid var(--accent) !important;
+        border-left-width: 15px !important;
     }
-  }
+
+    .schedule-table tr.active-row td:last-child {
+        color: #000 !important;
+        font-weight: 900;
+    }
+ }
 }
 
 /* Ajuste para telas muito finas (iPhone SE e afins) */
