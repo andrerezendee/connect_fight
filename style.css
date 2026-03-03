@@ -120,10 +120,6 @@ button {
       left: -25%;
       transition: all 0.3s ease; /* Transição para todas as propriedades */
 
-      /* --- ADICIONADO: EFEITO PRETO E BRANCO --- */
-      /* filter: grayscale(100%); Transforma em preto e branco */
-      /* --- ADICIONADO: EFEITO PRETO E BRANCO --- */
-
 
     }
     .conteudo-botao-kids {
@@ -137,10 +133,6 @@ button {
       position: absolute;
       left: -25%;
       transition: all 0.3s ease; /* Transição para todas as propriedades */
-
-      /* --- ADICIONADO: EFEITO PRETO E BRANCO --- */
-      /* filter: grayscale(100%); Transforma em preto e branco */
-      /* --- ADICIONADO: EFEITO PRETO E BRANCO --- */
 
 
     }
@@ -197,8 +189,29 @@ button {
       transform: translateY(-3px) scale(1.05);
       box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
       background-color: #f8fafc;
+
     }
   }
+
+  /* Efeito para as letras do H3 */
+  .hero-left h3 span {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(10px); /* Vem levemente de baixo */
+      filter: blur(5px);
+      transition: all 0.2s ease;
+  }
+
+  /* Classe que o JS adiciona para revelar a letra */
+  .reveal-letter {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+      filter: blur(0) !important;
+  }
+
+
+
+
 }
 
  /* responsividade hero */
@@ -261,18 +274,18 @@ button {
     .botao-fake {
       background-color: #ffffff;
       color: #000000;
-      padding: 1rem 2rem;
+      padding: 0.8rem 1.8rem;
       border-radius: 50px;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 500;
+      font-size: 0.8rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.7px;
       transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
       box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
       margin-left: 0; /* Centraliza o botão de ação */
       margin-top: 20px;
-      margin-bottom: 2vh;
+      margin-bottom: 5vh;
     }
      .botao-fake:hover {
       transform: translateY(-3px) scale(1.05);
@@ -346,88 +359,91 @@ button {
   }
 
   /* Schedule Section */
-  .schedule-section {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      margin-top: 2rem;
-      margin-bottom: 4rem;
-      width: 100%;
-      max-width: 1200px;
-      animation: fadeInUp 1s ease-out backwards;
-      animation-delay: 0.6s;
-  }
-
   .schedule-card {
-      width: 400px;
-      background: rgba(255, 255, 255, 0.02);
-      /* more transparent tint */
-      backdrop-filter: blur(10px);
-      /* glassmorphism */
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 20px;
-      padding: 2rem;
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      text-align: center;
-      color: var(--text-color);
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      width: 450px;
+      background: transparent;
+      padding: 0; /* Removemos o padding interno para o conteúdo "respirar" */
+      position: relative;
+      border: none;
+      overflow: visible;
   }
 
-  .schedule-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
-      border-color: rgba(255, 255, 255, 0.2);
-  }
-
+  /* Título lateral vertical (Estilo Revista de Design) */
   .schedule-card h3 {
-      font-size: 1.5rem;
-      font-family: "montserrat";
-      font-weight: 600;
-      margin-bottom: 0.5rem;
-      color: #ffffffcf;
+      position: absolute;
+      left: -60px;
+      top: 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'Black Ops One', cursive;
+      font-size: 3rem;
+      color: rgba(255, 255, 255, 0.05); /* Quase invisível, ganha vida no hover */
+      margin: 0;
+      transition: all 0.6s ease;
   }
 
-  .schedule-days {
-      font-size: 1rem;
+  .schedule-card:hover h3 {
       color: var(--accent);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      padding-bottom: 1rem;
+      left: -80px;
   }
 
+  /* O "Corpo" da Tabela (Sem bordas, apenas linhas de pulso) */
   .schedule-table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0 15px; /* Espaço entre as linhas */
   }
 
-  .schedule-table th,
-  .schedule-table td {
-      padding: 0.8rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      font-size: 1rem;
-  }
-
-  .schedule-table th {
-      font-weight: 600;
-      color: #ffffffcf;
-      text-align: left;
+  .schedule-table tr {
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
   }
 
   .schedule-table td {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+  }
+
+  /* Canto Esquerdo da Linha (Indicador de Atividade) */
+  .schedule-table td:first-child {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      border-left: 0px solid var(--accent);
+      transition: all 0.3s ease;
+  }
+
+  /* Canto Direito (Horário) */
+  .schedule-table td:last-child {
+      font-family: 'Roboto Mono', monospace;
       font-weight: 300;
-      text-align: left;
-  }
-
-  .schedule-table tr:last-child th,
-  .schedule-table tr:last-child td {
-      border-bottom: none;
-  }
-
-  .schedule-table td:last-child,
-  .schedule-table th:last-child {
+      color: rgba(255, 255, 255, 0.4);
       text-align: right;
+  }
+
+  /* EFEITO INOVADOR NO HOVER DA LINHA */
+  .schedule-table tr:hover {
+      transform: scale(1.05) translateX(10px);
+      z-index: 10;
+  }
+
+  .schedule-table tr:hover td {
+      background: #fff; /* A linha "acende" em branco puro */
+      color: #000;      /* Texto fica preto para contraste máximo */
+  }
+
+  .schedule-table tr:hover td:first-child {
+      border-left-width: 15px; /* A barra de cor explode para a esquerda */
+  }
+
+  .schedule-table tr:hover td:last-child {
+      color: #000;
+      font-weight: 900;
   }
 }
 
@@ -435,71 +451,81 @@ button {
 
 @media (max-width: 768px) {
   .jiu-jtsu {
-    /* Altera para auto para o conteúdo não transbordar se o texto for longo */
     height: auto;
     min-height: 100vh;
-    /* Empilha o card de horários e o título verticalmente */
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column; /* Empilha o conteúdo */
     padding: 80px 5vw 40px 5vw;
-    gap: 3rem; /* Espaço entre o card e o título */
-
-    /* Suaviza a inclinação para não cortar o conteúdo no mobile */
-    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
-    margin-top: -5vh;
+    justify-content: flex-start;
+    gap: 2rem;
 
     .right {
-      width: 100%;
       text-align: center;
-      /* No mobile, o título geralmente fica melhor acima ou logo abaixo do card */
-      order: 1;
+      order: 1; /* Título JIU-JITSU no topo */
 
       h1 {
-        /* Redução drástica para caber na largura do celular */
-        font-size: 3.5rem;
-        /* Permite que o título quebre linha se necessário */
+        font-size: 3.5rem; /* Ajuste para não vazar */
         white-space: normal;
-        line-height: 1.1;
-        justify-content: center;
-        display: flex;
-        flex-wrap: wrap;
-        /* Ajuste do stroke para não borrar em fontes menores */
+        line-height: 1;
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
       }
     }
 
-    /* Ajuste do Card de Horários (Glassmorphism) */
+    /* Ajuste do Card Cinético */
     .schedule-card {
-      width: 100%; /* Ocupa a largura total disponível */
-      max-width: 380px; /* Limite para não ficar excessivamente largo em tablets */
-      padding: 1.5rem;
-      order: 2; /* Posiciona o card abaixo do título */
+      width: 100%;
+      max-width: 100%;
+      order: 2;
+      margin-top: 4rem; /* Espaço para o título vertical que agora é horizontal */
+
+      /* Movemos o título vertical para cima do card no mobile */
+      h3 {
+        position: relative;
+        writing-mode: horizontal-tb; /* Volta ao normal */
+        transform: rotate(0deg);
+        left: 0;
+        top: 0;
+        font-size: 2rem;
+        color: var(--accent);
+        opacity: 0.3;
+        margin-bottom: 1rem;
+        text-align: center;
+      }
     }
 
-    .schedule-section {
-      justify-content: center; /* Centraliza o card na tela */
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+    .schedule-table {
+      border-spacing: 0 10px; /* Reduz espaço entre linhas */
     }
 
-    /* Ajustes na tabela para telas pequenas */
-    .schedule-table th,
     .schedule-table td {
+      padding: 1rem; /* Padding menor para caber na tela */
       font-size: 0.9rem;
-      padding: 0.6rem 0;
+    }
+
+    .schedule-table td:first-child {
+      font-size: 1rem;
+    }
+
+    /* Como no mobile não existe hover, suavizamos o efeito de escala */
+    .schedule-table tr:active,
+    .schedule-table tr:hover {
+      transform: scale(1.02) translateX(5px);
+    }
+
+    .schedule-table tr:hover td:first-child {
+      border-left-width: 8px; /* Lâmina menor no mobile */
     }
   }
 }
 
-/* Ajuste fino para aparelhos muito estreitos */
+/* Ajuste fino para telas mínimas */
 @media (max-width: 480px) {
   .jiu-jtsu .right h1 {
     font-size: 2.8rem;
   }
 
-  .jiu-jtsu .schedule-card {
-    padding: 1.2rem;
+  .jiu-jtsu .schedule-table td:last-child {
+    font-size: 0.8rem;
+    letter-spacing: 0;
   }
 }
 
@@ -538,89 +564,95 @@ button {
   }
 
     /* Schedule Section */
-    .schedule-section {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        margin-top: 2rem;
-        margin-bottom: 4rem;
-        width: 100%;
-        max-width: 1200px;
-        animation: fadeInUp 1s ease-out backwards;
-        animation-delay: 0.6s;
-    }
-
     .schedule-card {
-        width: 400px;
-        background: rgba(255, 255, 255, 0.02);
-        /* more transparent tint */
-        backdrop-filter: blur(10px);
-        /* glassmorphism */
-        -webkit-backdrop-filter: blur(16px);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-        text-align: center;
-        color: var(--text-color);
-        transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-    }
+      width: 450px;
+      background: transparent;
+      padding: 0; /* Removemos o padding interno para o conteúdo "respirar" */
+      position: relative;
+      border: none;
+      overflow: visible;
+  }
+  .schedule-card p {
+    color:rgba(255, 255, 255, 0.641);
+  }
 
-    .schedule-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
-        border-color: rgba(255, 255, 255, 0.2);
-    }
+  /* Título lateral vertical (Estilo Revista de Design) */
+  .schedule-card h3 {
+      position: absolute;
+      left: -60px;
+      top: 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'Black Ops One', cursive;
+      font-size: 3rem;
+      color: rgba(255, 255, 255, 0.219); /* Quase invisível, ganha vida no hover */
+      margin: 0;
+      transition: all 0.6s ease;
+  }
 
-    .schedule-card h3 {
-        font-size: 1.5rem;
-        font-family: "montserrat";
-        font-weight: 600;
-        margin-bottom: 0.5rem;
-        color: #ffffffcf;
-    }
+  .schedule-card:hover h3 {
+      color: rgba(255, 255, 255, 0.697);
+      left: -80px;
+  }
 
-    .schedule-days {
-        font-size: 1rem;
-        color: var(--accent);
-        margin-bottom: 1.5rem;
-        font-weight: 300;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 1rem;
-    }
+  /* O "Corpo" da Tabela (Sem bordas, apenas linhas de pulso) */
+  .schedule-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px; /* Espaço entre as linhas */
+  }
 
-    .schedule-table {
-        width: 100%;
-        border-collapse: collapse;
-    }
+  .schedule-table tr {
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+  }
 
-    .schedule-table th,
-    .schedule-table td {
-        padding: 0.8rem 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 1rem;
-    }
+  .schedule-table td {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+  }
 
-    .schedule-table th {
-        font-weight: 600;
-        color: #ffffffcf;
-        text-align: left;
-    }
+  /* Canto Esquerdo da Linha (Indicador de Atividade) */
+  .schedule-table td:first-child {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      border-left: 0px solid var(--accent);
+      transition: all 0.3s ease;
+  }
 
-    .schedule-table td {
-        font-weight: 300;
-        text-align: left;
-    }
+  /* Canto Direito (Horário) */
+  .schedule-table td:last-child {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: right;
+  }
 
-    .schedule-table tr:last-child th,
-    .schedule-table tr:last-child td {
-        border-bottom: none;
-    }
+  /* EFEITO INOVADOR NO HOVER DA LINHA */
+  .schedule-table tr:hover {
+      transform: scale(1.05) translateX(10px);
+      z-index: 10;
+  }
 
-    .schedule-table td:last-child,
-    .schedule-table th:last-child {
-        text-align: right;
-    }
+  .schedule-table tr:hover td {
+      background: #fff; /* A linha "acende" em branco puro */
+      color: #000;      /* Texto fica preto para contraste máximo */
+  }
+
+  .schedule-table tr:hover td:first-child {
+      border-left-width: 15px; /* A barra de cor explode para a esquerda */
+  }
+
+  .schedule-table tr:hover td:last-child {
+      color: #000;
+      font-weight: 900;
+  }
 
 }
 
@@ -628,68 +660,93 @@ button {
 
 @media (max-width: 768px) {
   .muay-thai {
-    /* Permite que a seção cresça conforme o conteúdo empilhado */
     height: auto;
     min-height: 100vh;
-    flex-direction: column; /* Empilha o Título e o Card */
-    justify-content: center;
-    align-items: center;
-    padding: 80px 5vw 40px 5vw;
-    gap: 2.5rem; /* Espaço entre o título e a tabela */
+    flex-direction: column; /* Empilha o título e a tabela */
+    padding: 100px 5vw 60px 5vw;
+    justify-content: flex-start;
+    gap: 3rem;
 
-    /* Suaviza a inclinação para não cortar o conteúdo no mobile */
+    /* Suaviza o clip-path para não cortar o título no mobile */
     clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 5%);
     margin-top: -5vh;
 
     .left {
       width: 100%;
       text-align: center;
-      align-items: center;
+      order: 1; /* Título no topo */
 
       h1 {
-        /* Redução do tamanho massivo para telas de celular */
-        font-size: 3.5rem;
+        font-size: 3.2rem; /* Reduz de 10rem para caber na tela */
         justify-content: center;
-        white-space: normal; /* Permite que o texto quebre linha */
-        flex-wrap: wrap;
+        white-space: normal;
         line-height: 1.1;
-        /* Ajuste do stroke para não borrar em fontes menores */
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+        gap: 10px;
       }
     }
 
     /* Ajuste do Card de Horários */
     .schedule-card {
-      width: 100%; /* Ocupa a largura total do container mobile */
-      max-width: 380px; /* Limite para não ficar excessivamente largo */
-      padding: 1.5rem;
-      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+      order: 2;
+      margin-top: 2rem;
+
+      /* Título "SCHEDULE" deixa de ser vertical */
+      h3 {
+        position: relative;
+        writing-mode: horizontal-tb;
+        transform: rotate(0deg);
+        left: 0;
+        top: 0;
+        font-size: 1.8rem;
+        color: rgba(255, 255, 255, 0.4);
+        margin-bottom: 1.5rem;
+        text-align: center;
+        letter-spacing: 5px;
+      }
+
+      p {
+        text-align: center;
+        margin-bottom: 2rem;
+        font-size: 0.9rem;
+      }
     }
 
-    .schedule-section {
-      justify-content: center; /* Centraliza o card na tela */
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+    .schedule-table {
+      border-spacing: 0 10px;
     }
 
-    /* Ajustes na tabela para telas pequenas */
-    .schedule-table th,
     .schedule-table td {
-      font-size: 0.9rem;
-      padding: 0.6rem 0;
+      padding: 1.2rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .schedule-table td:first-child {
+      font-size: 1rem;
+    }
+
+    /* Ajuste do efeito de "Impacto" para Touch */
+    .schedule-table tr:active,
+    .schedule-table tr:hover {
+      transform: scale(1.02) translateX(5px);
+    }
+
+    .schedule-table tr:hover td:first-child {
+      border-left-width: 8px; /* Lâmina de cor reduzida */
     }
   }
 }
 
-/* Ajustes finos para celulares muito estreitos */
+/* Ajuste fino para aparelhos extra pequenos */
 @media (max-width: 480px) {
   .muay-thai .left h1 {
-    font-size: 2.8rem;
+    font-size: 2.5rem;
   }
 
-  .muay-thai .schedule-card {
-    padding: 1rem;
-    border-radius: 15px;
+  .muay-thai .schedule-table td {
+    padding: 1rem 0.8rem;
   }
 }
 
@@ -737,90 +794,95 @@ button {
   }
 
       /* Schedule Section */
-      .schedule-section {
-          display: flex;
-          justify-content: flex-start;
-          align-items: center;
-          margin-top: 2rem;
-          margin-bottom: 4rem;
-          width: 100%;
-          max-width: 1200px;
-          animation: fadeInUp 1s ease-out backwards;
-          animation-delay: 0.6s;
-      }
+          .schedule-card {
+      width: 450px;
+      background: transparent;
+      padding: 0; /* Removemos o padding interno para o conteúdo "respirar" */
+      position: relative;
+      border: none;
+      overflow: visible;
+  }
+  .schedule-card p {
+    color:rgba(0, 0, 0, 0.641);
+  }
 
-      .schedule-card {
-          width: 400px;
-          background: rgba(255, 255, 255, 0.02);
-          /* more transparent tint */
-          backdrop-filter: blur(10px);
-          /* glassmorphism */
-          -webkit-backdrop-filter: blur(16px);
-          border: 1px solid rgba(255, 255, 255, 0.05);
-          border-radius: 20px;
-          padding: 2rem;
-          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-          text-align: center;
-          color: var(--text-color);
-          transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-      }
+  /* Título lateral vertical (Estilo Revista de Design) */
+  .schedule-card h3 {
+      position: absolute;
+      left: -60px;
+      top: 0;
+      writing-mode: vertical-rl;
+      transform: rotate(180deg);
+      font-family: 'Black Ops One', cursive;
+      font-size: 3rem;
+      color: rgba(255, 255, 255, 0.219); /* Quase invisível, ganha vida no hover */
+      margin: 0;
+      transition: all 0.6s ease;
+  }
 
-      .schedule-card:hover {
-          transform: translateY(-5px);
-          box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
-          border-color: rgba(255, 255, 255, 0.2);
-      }
+  .schedule-card:hover h3 {
+      color: rgba(0, 0, 0, 0.697);
+      left: -80px;
+  }
 
-      .schedule-card h3 {
-          font-size: 1.5rem;
-          font-family: "montserrat";
-          font-weight: 600;
-          margin-bottom: 0.5rem;
-          color: #ffffffcf;
-      }
+  /* O "Corpo" da Tabela (Sem bordas, apenas linhas de pulso) */
+  .schedule-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 15px; /* Espaço entre as linhas */
+  }
 
-      .schedule-days {
-          font-size: 1rem;
-          color: var(--accent);
-          margin-bottom: 1.5rem;
-          font-weight: 300;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          padding-bottom: 1rem;
-      }
+  .schedule-table tr {
+      cursor: pointer;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+  }
 
-      .schedule-table {
-          width: 100%;
-          border-collapse: collapse;
-      }
+  .schedule-table td {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.02);
+      border: none;
+      font-family: 'Outfit', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+  }
 
-      .schedule-table th,
-      .schedule-table td {
-          padding: 0.8rem 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          font-size: 1rem;
-      }
+  /* Canto Esquerdo da Linha (Indicador de Atividade) */
+  .schedule-table td:first-child {
+      font-weight: 800;
+      font-size: 1.2rem;
+      color: #fff;
+      border-left: 0px solid var(--accent);
+      transition: all 0.3s ease;
+  }
 
-      .schedule-table th {
-          font-weight: 600;
-          color: #ffffffcf;
-          text-align: left;
-      }
+  /* Canto Direito (Horário) */
+  .schedule-table td:last-child {
+      font-family: 'Roboto Mono', monospace;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.4);
+      text-align: right;
+  }
 
-      .schedule-table td {
-          font-weight: 300;
-          text-align: left;
-      }
+  /* EFEITO INOVADOR NO HOVER DA LINHA */
+  .schedule-table tr:hover {
+      transform: scale(1.05) translateX(10px);
+      z-index: 10;
+  }
 
-      .schedule-table tr:last-child th,
-      .schedule-table tr:last-child td {
-          border-bottom: none;
-      }
+  .schedule-table tr:hover td {
+      background: #fff; /* A linha "acende" em branco puro */
+      color: #000;      /* Texto fica preto para contraste máximo */
+  }
 
-      .schedule-table td:last-child,
-      .schedule-table th:last-child {
-          text-align: right;
-      }
+  .schedule-table tr:hover td:first-child {
+      border-left-width: 15px; /* A barra de cor explode para a esquerda */
+  }
 
+  .schedule-table tr:hover td:last-child {
+      color: #000;
+      font-weight: 900;
+  }
 
 }
 
@@ -829,69 +891,102 @@ button {
 
 @media (max-width: 768px) {
   .kids {
-    /* Permite que a seção cresça verticalmente com o conteúdo */
     height: auto;
     min-height: 100vh;
-    flex-direction: column; /* Empilha o Card e o Texto */
-    justify-content: center;
-    align-items: center;
-    padding: 80px 5vw 40px 5vw;
-    gap: 3rem; /* Espaço entre o card de horários e o título */
+    flex-direction: column; /* Empilha o título e a tabela */
+    padding: 100px 5vw 60px 5vw;
+    justify-content: flex-start;
+    gap: 2rem;
 
-    /* Suaviza a inclinação no mobile para não "comer" muito espaço */
+    /* Suaviza a inclinação para proteger o conteúdo */
     clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
     margin-top: -5vh;
 
     .right {
       width: 100%;
       text-align: center;
-      order: 1; /* Coloca o título KIDS no topo no mobile */
+      order: 1; /* Garante que o texto venha antes da tabela */
 
       h1 {
-        font-size: 4rem; /* Redução drástica para caber no celular */
+        font-size: 3.5rem; /* Ajuste para o nome da modalidade */
         justify-content: center;
-        white-space: normal; /* Permite quebra de linha */
-        flex-wrap: wrap;
+        white-space: normal;
         line-height: 1;
         -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
       }
 
       h3 {
-        font-size: 20px;
+        font-size: 1.2rem; /* Subtítulo mais legível no mobile */
         margin-top: 10px;
+        text-align: center;
       }
     }
 
-    /* Ajuste do Card de Horários */
+    /* Ajuste do Card de Horários Cinético */
     .schedule-card {
-      width: 100%; /* Ocupa a largura total disponível */
-      max-width: 350px; /* Limite para não ficar largo demais em tablets */
-      padding: 1.5rem;
-      order: 2; /* Card fica abaixo do título no mobile */
-      margin: 0 auto;
+      width: 100%;
+      max-width: 100%;
+      order: 2;
+      margin-top: 3rem;
+
+      /* Título lateral "SCHEDULE" vira horizontal */
+      h3 {
+        position: relative;
+        writing-mode: horizontal-tb;
+        transform: rotate(0deg);
+        left: 0;
+        top: 0;
+        font-size: 1.8rem;
+        color: var(--accent);
+        opacity: 0.4;
+        margin-bottom: 1rem;
+        text-align: center;
+        letter-spacing: 5px;
+      }
+
+      p {
+        text-align: center;
+        font-size: 0.9rem;
+      }
     }
 
-    .schedule-section {
-      justify-content: center;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
+    .schedule-table {
+      border-spacing: 0 10px;
     }
 
-    .schedule-table th,
     .schedule-table td {
-      font-size: 0.9rem; /* Diminui levemente a fonte da tabela */
+      padding: 1.2rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .schedule-table td:first-child {
+      font-size: 1rem;
+    }
+
+    /* Ajuste de animação para Touch */
+    .schedule-table tr:active,
+    .schedule-table tr:hover {
+      transform: scale(1.02) translateX(5px);
+    }
+
+    .schedule-table tr:hover td:first-child {
+      border-left-width: 8px;
     }
   }
 }
 
-/* Ajuste para telas muito pequenas */
+/* Ajuste para telas muito finas (iPhone SE e afins) */
 @media (max-width: 480px) {
   .kids .right h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
 
-  .kids .schedule-card {
-    padding: 1rem;
+  .kids .right h3 {
+    font-size: 1rem;
+  }
+
+  .kids .schedule-table td {
+    padding: 1rem 0.5rem;
   }
 }
 

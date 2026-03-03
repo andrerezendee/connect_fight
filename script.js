@@ -51,3 +51,36 @@ document.addEventListener('DOMContentLoaded', () => {
     startAutoPlay();
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+    const h3Element = document.querySelector('.hero-left h3');
+    const botao = document.querySelector('.botao-fake');
+
+    if (!h3Element || !botao) return;
+
+    // 1. Prepara o H3: Transforma texto em Spans
+    const text = h3Element.innerText;
+    h3Element.innerHTML = ''; // Limpa o texto original
+
+    text.split('').forEach(char => {
+        const span = document.createElement('span');
+        span.innerHTML = char === ' ' ? '&nbsp;' : char;
+        h3Element.appendChild(span);
+    });
+
+    const spans = h3Element.querySelectorAll('span');
+
+    // 2. Anima as letras uma por uma
+    // O delay de 1200ms espera o preloader/logo carregarem
+    spans.forEach((span, index) => {
+        setTimeout(() => {
+            span.classList.add('reveal-letter');
+
+            // 3. Quando chegar na última letra, ilumina o botão
+            if (index === spans.length - 1) {
+                setTimeout(() => {
+                    botao.classList.add('botao-iluminado');
+                }, 400); // Pequena pausa após a última letra para o impacto
+            }
+        }, 1200 + (index * 40));
+    });
+});
