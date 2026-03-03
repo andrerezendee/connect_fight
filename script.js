@@ -89,24 +89,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const rows = document.querySelectorAll('.schedule-table tr');
 
     rows.forEach(row => {
-        row.addEventListener('click', function() {
-            // 1. Se a linha já estiver ativa, ela desativa ao clicar de novo
+        // Usamos uma função comum para tratar tanto clique quanto toque
+        const handleSelection = function(e) {
+            // Se houver links dentro da linha, não queremos travar o link
+            // mas queremos evitar que o clique "vaze" para outros elementos
+
             if (this.classList.contains('active-row')) {
                 this.classList.remove('active-row');
             } else {
-                // 2. Remove a classe de todas as outras linhas (para focar só em uma)
                 rows.forEach(r => r.classList.remove('active-row'));
-
-                // 3. Adiciona a classe na linha clicada
                 this.classList.add('active-row');
             }
-        });
-    });
+        };
 
-    // Opcional: Clicar fora da tabela remove o destaque
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.schedule-table')) {
-            rows.forEach(r => r.classList.remove('active-row'));
-        }
+        // Adiciona suporte a toque (mobile) e clique (desktop)
+        row.addEventListener('click', handleSelection);
     });
 });

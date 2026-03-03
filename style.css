@@ -970,7 +970,7 @@ button {
     .schedule-table tr.active-row td {
         background: #fff !important;
         color: #000 !important;
-        transform: scale(1.02) translateX(5px);
+        transform: scale(1.02) translateX(5px) !important;
     }
 
     .schedule-table tr.active-row td:first-child {
@@ -980,7 +980,7 @@ button {
 
     .schedule-table tr.active-row td:last-child {
         color: #000 !important;
-        font-weight: 900;
+        font-weight: 900 !important;
     }
  }
 }
