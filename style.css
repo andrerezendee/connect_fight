@@ -228,7 +228,7 @@ button {
     flex-direction: column; /* Empilha o conteúdo */
     height: auto; /* Permite que o conteúdo cresça verticalmente */
     min-height: 100vh;
-    padding: 100px 5vw 40px 5vw; /* Aumenta o padding superior por causa do header absolute */
+    padding: 0 5vw 40px 5vw; /* Aumenta o padding superior por causa do header absolute */
     justify-content: flex-start;
   }
 
@@ -243,8 +243,9 @@ button {
 
     h3 {
       margin-top: 40px;
-      font-size: 24px;
+      font-size: 20px;
       align-items: center;
+      white-space: nowrap;
     }
   }
 
@@ -265,7 +266,7 @@ button {
     }
 
     .botao-modalidade {
-      width: 120px; /* Diminui a largura no mobile */
+      width: 110px; /* Diminui a largura no mobile */
       height: 300px; /* Diminui a altura */
       flex-shrink: 0; /* Impede que o card esmague */
     }
@@ -303,7 +304,7 @@ button {
 /* Ajuste extra para telas muito pequenas (iPhone SE, etc) */
 @media (max-width: 480px) {
   .hero .hero-left h3 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .hero .hero-right .botao-modalidade {
@@ -489,6 +490,11 @@ button {
         opacity: 0.3;
         margin-bottom: 1rem;
         text-align: center;
+      }
+
+      p {
+        text-align: center;
+        color: rgba(0, 0, 0, 0.753);
       }
     }
 
